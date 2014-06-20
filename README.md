@@ -19,7 +19,7 @@ Jannis Breitwieser, 19.06.2014
 Setup
 =====
 - Syndciates Requires Mysql 5.1+
-- Syndciates Requires PHP (TODO - check required version number)
+- Syndciates Requires PHP (< 5.3)
 --- Required PHP-Modules: ./configure --with-apxs2=/www/bin/apxs --with-zlib --with-mysql=/home/mysql --with-gd --with-mcrypt --with-jpeg-dir=/opt --with-png-dir=/opt --with-zlib-dir=/opt --with-curl --with-mysql-sock=/home/mysql/data --with-mysqli=/home/mysql/bin/mysql_config --enable-mbstring
 --- Should use APC
 --- Install necessary os-modules:
