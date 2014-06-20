@@ -1,0 +1,7 @@
+<?
+
+
+require("../subs.php");
+connectdb();
+
+?>

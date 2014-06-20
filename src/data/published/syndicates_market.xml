@@ -1,0 +1,303 @@
+<marketexport>
+					<createtime_timestamp>1358202765</createtime_timestamp>
+					<createtime_date>14.01.13 - 23:32</createtime_date>
+<ressources>
+		<ressource>
+			<name>Energie</name>
+			<price>0</price>
+			<number>0</number>
+		</ressource>
+	
+		<ressource>
+			<name>Erz</name>
+			<price>0</price>
+			<number>0</number>
+		</ressource>
+	
+		<ressource>
+			<name>Forschungspunkte</name>
+			<price>0</price>
+			<number>0</number>
+		</ressource>
+	
+		<ressource>
+			<name>Credits</name>
+			<price>0</price>
+			<number>0</number>
+		</ressource>
+	</ressources><race>
+
+							<race_name>Brute Force</race_name>
+							<military_units>
+		<unit>
+								<name>Marine</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Ranger</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Wartank</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Strike Fighter</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Titan</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			</military_units>
+						<spy_units>	<unit>
+								<name>Thief</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Guardian</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Agent</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			
+			</spy_units>
+		</race><race>
+
+							<race_name>United Industries Corporation</race_name>
+							<military_units>
+		<unit>
+								<name>Marine</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Ranger</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Robotic Wall</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Firestorm</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Sentinel</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			</military_units>
+						<spy_units>	<unit>
+								<name>Thief</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Guardian</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Agent</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			
+			</spy_units>
+		</race><race>
+
+							<race_name>Shadow Labs</race_name>
+							<military_units>
+		<unit>
+								<name>Marine</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Ranger</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Stalker</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Headhunter</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Stealth Bomber</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			</military_units>
+						<spy_units>	<unit>
+								<name>Thief</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Guardian</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Agent</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			
+			</spy_units>
+		</race><race>
+
+							<race_name>New Economic Block</race_name>
+							<military_units>
+		<unit>
+								<name>Marine</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Ranger</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Patriot</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Phoenix</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>EMP Cannon</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			</military_units>
+						<spy_units>	<unit>
+								<name>Thief</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Guardian</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Agent</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			
+			</spy_units>
+		</race><race>
+
+							<race_name>Nova Federation</race_name>
+							<military_units>
+		<unit>
+								<name>Marine</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Ranger</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Carrier</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Halo</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Behemoth</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			</military_units>
+						<spy_units>	<unit>
+								<name>Thief</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Guardian</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			<unit>
+								<name>Agent</name>
+								<price>0</price>
+								<number>0</number>
+							</unit>
+			
+			
+			</spy_units>
+		</race></marketexport>

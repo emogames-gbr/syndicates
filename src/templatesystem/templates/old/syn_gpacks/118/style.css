@@ -1,0 +1,214 @@
+<style>
+<!--
+
+.dummy {
+}
+
+.tableHead {
+	background-color: #491467;
+	font-size: 12px;
+	color: #ffffff;
+	font-family:arial,verdana,sans-serif;
+	font-weight: 900;
+}
+
+.tableHead2 {
+	background-color: #693487;
+	font-size: 12px;
+	color: #ffffff;
+	font-family:arial,verdana,sans-serif;
+	font-weight: 900;
+}
+
+.tableOutline {
+	background-color: #000000;
+	font-family:arial,verdana,sans-serif;
+	color: #252E3C;
+}
+
+.tableInner1 {
+	background-color: #695b6e;
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #ffffff;
+}
+
+.tableInner2 {
+	background-color: #786f7b;
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #ffffff;
+}
+
+.menueHead {
+	background-image: url(menubar.png);
+	font-size: 12px;
+	font-family:arial,verdana,sans-serif;
+	color: #ffffff;
+	font-weight: 900;
+}
+
+	.body {
+		background-color:#08994;
+		font-family: verdana;
+		color:#ffffff;
+		font-size:11px;
+	}
+
+
+.menueInner {
+	background-color: #9c93a0;
+	font-size: 11px;
+	cursor: hand;
+	font-family:arial,verdana,sans-serif;
+	color: #000000;
+}
+
+.siteGround {
+	background-color: #292929;
+	font-size: 12px;
+	font-family:arial,verdana,sans-serif;
+	color: #ffffff;
+}
+
+.titleH1 {
+	font-size: 18px;
+	color: #FFFFFF;
+	font-family:arial,verdana,sans-serif;
+	font-weight: 900;
+}
+
+.normaltitle {
+	font-size: 15px;
+	color: #FFFFFF;
+	font-family:arial,verdana,sans-serif;
+	font-weight: 900;
+}
+
+.titleLine {
+	background-color:#ffffff;
+}
+
+.f {
+	background-color: #aa0000;
+	font-size: 12px;
+	font-family:arial,verdana,sans-serif;
+	color: #FFFFFF;
+}
+
+.s {
+	background-color: #00a000;
+	font-size: 12px;
+	font-family:arial,verdana,sans-serif;
+	color: #FFFFFF;
+}
+
+.i {
+	background-color: #ffe900;
+	font-size: 12px;
+	font-family:arial,verdana,sans-serif;
+	color: #000000;
+}
+
+
+.highlightAuftableInner {
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #FCD000;
+}
+
+.achtungAuftableInner {
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #8C2F2F;
+}
+
+.gruenAuftableInner {
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #007108;
+}
+
+.highlightAufSiteBg {
+	font-size: 12px;
+	font-family:arial,verdana,sans-serif;
+	color: #FCD000;
+}
+
+.resourceLeiste {
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #FFFFFF;
+}
+.hrAufSiteBg {
+	color: #ffffff;
+	height: 1px;
+}
+
+a.konzernAttacked:link 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#FFEA75;}
+a.konzernAttacked:visited 	{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#FFEA75;}
+a.konzernAttacked:hover 		{text-decoration: underline; 	font-size:11px; font-family:arial,verdana,sans-serif; color:#FFEA75;}
+a.konzernAttacked:active 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#FFEA75;}
+
+.konzernAttacked {
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #FFEA75;
+}
+
+a.konzernHeavyAttacked:link 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#9F0000;}
+a.konzernHeavyAttacked:visited 	{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#9F0000;}
+a.konzernHeavyAttacked:hover 		{text-decoration: underline; 	font-size:11px; font-family:arial,verdana,sans-serif; color:#9F0000;}
+a.konzernHeavyAttacked:active 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#9F0000;}
+
+.konzernHeavyAttacked {
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #9F0000;
+}
+
+a.konzernProtected:link 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000C7D;}
+a.konzernProtected:visited 	{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000C7D;}
+a.konzernProtected:hover 		{text-decoration: underline; 	font-size:11px; font-family:arial,verdana,sans-serif; color:#000C7D;}
+a.konzernProtected:active 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000C7D;}
+
+..konzernProtected {
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #000C7D;
+}
+
+a.konzernHoliday:link 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000000;}
+a.konzernHoliday:visited 	{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000000;}
+a.konzernHoliday:hover 		{text-decoration: underline; 	font-size:11px; font-family:arial,verdana,sans-serif; color:#000000;}
+a.konzernHoliday:active 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000000;}
+
+.konzernHoliday {
+	font-size: 11px;
+	font-family:arial,verdana,sans-serif;
+	color: #000000;
+}
+
+a.linkAuftableInner:link 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#ffffff;}
+a.linkAuftableInner:visited 	{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#ffffff;}
+a.linkAuftableInner:hover 		{text-decoration: underline; 	font-size:11px; font-family:arial,verdana,sans-serif; color:#ffffff;}
+a.linkAuftableInner:active 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#ffffff;}
+
+a.linkAufsiteBg:link 		{text-decoration: none; 		font-size:12px; font-family:arial,verdana,sans-serif; color:#ffffff;}
+a.linkAufsiteBg:visited 	{text-decoration: none; 		font-size:12px; font-family:arial,verdana,sans-serif; color:#ffffff;}
+a.linkAufsiteBg:hover 		{text-decoration: underline; 	font-size:12px; font-family:arial,verdana,sans-serif; color:#ffffff;}
+a.linkAufsiteBg:active 		{text-decoration: none; 		font-size:12px; font-family:arial,verdana,sans-serif; color:#ffffff;}
+
+a.linkMenue:link 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000000;}
+a.linkMenue:visited 	{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000000;}
+a.linkMenue:hover 		{text-decoration: none; 	font-size:11px; font-family:arial,verdana,sans-serif; color:#000000;}
+a.linkMenue:active 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#000000;}
+
+a.linkMenueGrey:link 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#b9b8bc;}
+a.linkMenueGrey:visited 	{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#b9b8bc;}
+a.linkMenueGrey:hover 		{text-decoration: none; 	font-size:11px; font-family:arial,verdana,sans-serif; color:#b9b8bc;}
+a.linkMenueGrey:active 		{text-decoration: none; 		font-size:11px; font-family:arial,verdana,sans-serif; color:#b9b8bc;}
+
+
+-->
+</style>

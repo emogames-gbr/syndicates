@@ -1,0 +1,1 @@
+Syndicates Newsletter miniapp

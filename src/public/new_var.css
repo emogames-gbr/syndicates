@@ -1,0 +1,21 @@
+{strip}	.uic {ldelim} {if !$FRAKTIONEN.uic.loged_in}cursor:pointer;{/if} left:386px; top:19px;  width:185px; height:170px; z-index:30; background-image:url(images/startseite/desc_uic{if !$FRAKTIONEN.uic.loged_in}{if $FRAKTIONEN.uic.active}_available{else}_blocked{/if}{/if}.png); background-position:1000px 1000px; background-repeat:no-repeat; {rdelim}
+	.sl  {ldelim} {if !$FRAKTIONEN.sl.loged_in}cursor:pointer;{/if} left:259px; top:111px; width:177px; height:177px; z-index:30; background-image:url(images/startseite/desc_sl{if !$FRAKTIONEN.sl.loged_in}{if $FRAKTIONEN.sl.active}_available{else}_blocked{/if}{/if}.png);  background-position:1000px 1000px; background-repeat:no-repeat; {rdelim}
+	.pbf {ldelim} {if !$FRAKTIONEN.pbf.loged_in}cursor:pointer;{/if} left:523px; top:111px; width:179px; height:168px; z-index:30; background-image:url(images/startseite/desc_pbf{if !$FRAKTIONEN.pbf.loged_in}{if $FRAKTIONEN.pbf.active}_available{else}_blocked{/if}{/if}.png); background-position:1000px 1000px; background-repeat:no-repeat; {rdelim}
+	.nof {ldelim} {if !$FRAKTIONEN.nof.loged_in}cursor:pointer;{/if} left:308px; top:267px; width:181px; height:173px; z-index:30; background-image:url(images/startseite/desc_nof{if !$FRAKTIONEN.nof.loged_in}{if $FRAKTIONEN.nof.active}_available{else}_blocked{/if}{/if}.png); background-position:1000px 1000px; background-repeat:no-repeat; {rdelim}
+	.neb {ldelim} {if !$FRAKTIONEN.neb.loged_in}cursor:pointer;{/if} left:478px; top:286px; width:175px; height:159px; z-index:30; background-image:url(images/startseite/desc_neb{if !$FRAKTIONEN.neb.loged_in}{if $FRAKTIONEN.neb.active}_available{else}_blocked{/if}{/if}.png); background-position:1000px 1000px; background-repeat:no-repeat; {rdelim}
+	.uic_hover {ldelim} display:none; background-image:url(images/startseite/desc_uic.png); background-repeat:no-repeat; left:359px; top:-12px; width:280px; height:180px; padding:30px 10px 30px 230px; z-index:29; {rdelim}
+	.uic_blocked {ldelim} background-image:url(images/startseite/desc_uic_blocked.png); {rdelim}
+	.uic_available {ldelim} background-image:url(images/startseite/desc_uic_available.png); {rdelim}
+	.sl_hover  {ldelim} display:none; background-image:url(images/startseite/desc_sl.png);  background-repeat:no-repeat; left:227px; top:79px;  width:280px; height:180px; padding:30px 10px 30px 230px; z-index:29; {rdelim}
+	.sl_blocked {ldelim} background-image:url(images/startseite/desc_sl_blocked.png); {rdelim}
+	.sl_available {ldelim} background-image:url(images/startseite/desc_sl_available.png); {rdelim}
+	.pbf_hover {ldelim} display:none; background-image:url(images/startseite/desc_pbf.png);  background-repeat:no-repeat; left:212px; top:80px;  width:280px; height:180px; padding:30px 230px 30px 10px; z-index:29; {rdelim}
+	.pbf_blocked {ldelim} background-image:url(images/startseite/desc_pbf_blocked.png); {rdelim}
+	.pbf_available {ldelim} background-image:url(images/startseite/desc_pbf_available.png); {rdelim}
+	.nof_hover {ldelim} display:none; background-image:url(images/startseite/desc_nof.png); background-repeat:no-repeat; left:280px; top:237px; width:280px; height:180px; padding:30px 10px 30px 230px; z-index:29; {rdelim}
+	.nof_blocked {ldelim} background-image:url(images/startseite/desc_nof_blocked.png); {rdelim}
+	.nof_available {ldelim} background-image:url(images/startseite/desc_nof_available.png); {rdelim}
+	.neb_hover {ldelim} display:none; background-image:url(images/startseite/desc_neb.png); background-repeat:no-repeat; left:165px; top:239px; width:280px; height:180px; padding:30px 230px 30px 10px; z-index:29; {rdelim}
+	.neb_blocked {ldelim} background-image:url(images/startseite/desc_neb_blocked.png); {rdelim}
+	.neb_available {ldelim} background-image:url(images/startseite/desc_neb_available.png); {rdelim}
+{/strip}
