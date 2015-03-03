@@ -1,7 +1,7 @@
 <?
 
 //**************************************************************************//
-//							Übergabe Variablen checken						//
+//							Ãœbergabe Variablen checken						//
 //**************************************************************************//
 
 
@@ -18,8 +18,8 @@ require_once("../../inc/ingame/game.php");
 $time = time();
 $userId = single("select id from users where konzernid=".$status[id]);
 $firstTimeDB = single("select buddy_calc from users where id=$userId");
-if($changesyn=="wählen") $action="new";
-if($submit=="Spieler auswählen") $action="ok";
+if($changesyn=="wÃ¤hlen") $action="new";
+if($submit=="Spieler auswÃ¤hlen") $action="ok";
 
 //**************************************************************************//
 //						     	  Header   	     	    					//
@@ -34,7 +34,7 @@ if($submit=="Spieler auswählen") $action="ok";
 //myfirst time
 if(!$firstTimeDB && !$firsttime){
 	require_once("../../inc/ingame/header.php");
-	$infomsg="Sie öffnen die Buddyseite zum ersten Mal. Zur Erfassung potentieller Buddys sind einige Berechnungen nötig. <br>Mit dem klick auf \"Weiter\" werden diese durchgeführt. Bitte beachten Sie, dass der Vorgang bis zu einer Minute dauern kann und das eine Aktualisierung der Seite den Vorgang verlangsamt.<br>
+	$infomsg="Sie Ã¶ffnen die Buddyseite zum ersten Mal. Zur Erfassung potentieller Buddys sind einige Berechnungen nÃ¶tig. <br>Mit dem klick auf \"Weiter\" werden diese durchgefÃ¼hrt. Bitte beachten Sie, dass der Vorgang bis zu einer Minute dauern kann und das eine Aktualisierung der Seite den Vorgang verlangsamt.<br>
 	<a href=\"buddy.php?firsttime=agree\">->Weiter</a>";
 	$tpl->assign("INFO",$infomsg);
 	$tpl->display('info.tpl');
@@ -146,11 +146,11 @@ $sessidsactual = assocs("select user_id, gueltig_bis from sessionids_actual", "u
 $errormsg="";
 $msg="";
 $infomsg="";
-$id = $_GET['id'];
+$id = mysql_real_escape_string($_GET['id']);
 if($action){
 	$nume=getBuddyNums();
 		if($action=="ok" && $nume['total']<BUDDY_COUNT_MAX){
-			if($nume['total']>=BUDDY_COUNT_MAX){ $errormsg="Sie können nicht mehr als 25 Spieler auf ihrer Buddylist haben.";}
+			if($nume['total']>=BUDDY_COUNT_MAX){ $errormsg="Sie kÃ¶nnen nicht mehr als 25 Spieler auf ihrer Buddylist haben.";}
 			else {
 				if (is_numeric($id) && $secret) $id=single("SELECT id FROM users WHERE konzernid = ".$id);
 				$sid=single("select konzernid from users where id=$id");
@@ -159,22 +159,22 @@ if($action){
 					$data = assoc("select * from users_buddy where (uid1=$userId and uid2=$id) or (uid2=$userId and uid1=$id)");
 					$me = $data['uid1'] == $userId;
 					if(!$data){
-						$msg = "Der Spieler wurde informiert und kann die Buddyanfrage bestätigen.";
+						$msg = "Der Spieler wurde informiert und kann die Buddyanfrage bestÃ¤tigen.";
 						select("INSERT INTO `users_buddy` (`id`, `uid1`, `uid2`, `reaction`, `reactionTime`, `time`, `autoCreate`, `status`, `quantity1`, `quantity2`) VALUES (NULL, '$userId', '".$id."', '$$userId', '0', '$time', '0', '1', '1', '1')");
-						select("INSERT INTO  `message_values` (`id` ,  `user_id` ,  `time` ,  `gelesen` ,  `werte` ) VALUES ('44',  '$sid',  '$time',  '0',  'Ein Spieler hat ihnen eine Buddyanfrage geschickt. Sie können diese auf der <a href=\"buddy.php\">Buddy-Seite</a> einsehen.')");
+						select("INSERT INTO  `message_values` (`id` ,  `user_id` ,  `time` ,  `gelesen` ,  `werte` ) VALUES ('44',  '$sid',  '$time',  '0',  'Ein Spieler hat ihnen eine Buddyanfrage geschickt. Sie kÃ¶nnen diese auf der <a href=\"buddy.php\">Buddy-Seite</a> einsehen.')");
 					} elseif($data['status']==1 && $data['reaction']==1){
-						$errormsg= "Der ausgewählte Spieler ist bereits auf ihrere Buddylist.";
+						$errormsg= "Der ausgewÃ¤hlte Spieler ist bereits auf ihrere Buddylist.";
 					} elseif($data['status']==1 && $data['reaction']!=$userId){
-						$msg = "Erfolgreich zur Buddylist hinzugefügt.";
+						$msg = "Erfolgreich zur Buddylist hinzugefÃ¼gt.";
 						select("update users_buddy set status=1, reaction=1, reactionTime=$time where id=".$data[id]);
 						select("INSERT INTO  `message_values` (`id` ,  `user_id` ,  `time` ,  `gelesen` ,  `werte` ) VALUES ('44',  '$sid',  '$time',  '0',  'Ein Spieler hat ihre Buddyanfrage angenommen.')");
 					} elseif($data['status']!= 1){
-						$msg = "Der Spieler wurde informiert und kann die Buddyanfrage bestätigen.";
+						$msg = "Der Spieler wurde informiert und kann die Buddyanfrage bestÃ¤tigen.";
 						select("update users_buddy set status=1, reaction=$userId, reactionTime=0 where id=".$data[id]);
-						select("INSERT INTO  `message_values` (`id` ,  `user_id` ,  `time` ,  `gelesen` ,  `werte` ) VALUES ('44',  '$sid',  '$time',  '0',  'Ein Spieler hat ihnen eine Buddyanfrage geschickt. Sie können diese auf der <a href=\"buddy.php\">Buddy-Seite</a> einsehen.')");
+						select("INSERT INTO  `message_values` (`id` ,  `user_id` ,  `time` ,  `gelesen` ,  `werte` ) VALUES ('44',  '$sid',  '$time',  '0',  'Ein Spieler hat ihnen eine Buddyanfrage geschickt. Sie kÃ¶nnen diese auf der <a href=\"buddy.php\">Buddy-Seite</a> einsehen.')");
 					}
 				} else {
-					$errormsg="Aktion nicht möglich.";
+					$errormsg="Aktion nicht mÃ¶glich.";
 				}
 			}
 		}
@@ -186,7 +186,7 @@ if($action){
 		$me = $data[uid1] == $userId;
 		$sid=single("select konzernid from users where id=$id");
 		if(!$data){
-			$errormsg = "Aktion nicht möglich.";
+			$errormsg = "Aktion nicht mÃ¶glich.";
 		} elseif($data['status']==1 && $data['reaction']==1){
 			select("update users_buddy set status=2 where id=".$data[id]);
 			$msg = "Der Spieler wurde aus ihrer Buddylist entfernt.";
@@ -212,9 +212,9 @@ if($action){
 				</tr>
 					<tr>
 						<td class=\"tableInner1\" align=left>
-								Syndikat wählen: <br>
+								Syndikat wÃ¤hlen: <br>
 								<a class=\"linkaufTableInner\" href=\"buddy.php?action=new&arid=$lastrid\"><<</a>
-								(#<input name=arid value=$arid size=3>) <input type=submit name=changesyn value=\"wählen\">
+								(#<input name=arid value=$arid size=3>) <input type=submit name=changesyn value=\"wÃ¤hlen\">
 								 <a class=\"linkaufTableInner\" href=\"buddy.php?action=new&arid=$nextrid\">>></a>
 						</td>
 						<td class=\"tableInner1\" align=left>
@@ -227,7 +227,7 @@ if($action){
 										$infomsg.="<option value=0>Keine Spieler in diesem Syndikat gefunden</option>";
 									}
 								$infomsg.="</select>
-							<input type=submit name=submit value=\"Spieler auswählen\">
+							<input type=submit name=submit value=\"Spieler auswÃ¤hlen\">
 						</td>
 					</tr>
 				</table>
@@ -282,7 +282,7 @@ $tpl->assign('BUDDYSA', $buddysA);
 
 
 $knows = getNextFreeBuddy($num=3);
-//$knows[] = array('name' => 'GanzTollerName', 'emonick' => 'drölf muhaha', 'rounds' => 13);
+//$knows[] = array('name' => 'GanzTollerName', 'emonick' => 'drÃ¶lf muhaha', 'rounds' => 13);
 
 $tpl->assign('KNOWS', $knows);
 $tpl->assign('ISRANDOMRUNDE', ISRANDOMRUNDE);
