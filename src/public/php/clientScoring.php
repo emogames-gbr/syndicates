@@ -9,7 +9,7 @@ require_once("../../inc/ingame/game.php");
 define('CLIENT_SCORING_ENDTIME', strtotime('2012-02-21 19:00'));
 $show=true; //!$_POST;
 $error=0;
-// Checkbox zurücksetzen
+// Checkbox zurÃ¼cksetzen
 $login_times=0;
 $play_reason=0;
 $future_am = 0;
@@ -26,7 +26,7 @@ if(single("select COUNT(*) from clientScoring where id=$statusId")){
 
 if($_GET['stop']==1){
 	select("insert into clientScoring (id,comment) values ($statusId,'stop')");
-	$tpl->assign('ERROR', "Die Befragung wurde für dich deaktiviert.");
+	$tpl->assign('ERROR', "Die Befragung wurde fÃ¼r dich deaktiviert.");
 	$error=1;
 }
 
@@ -39,7 +39,7 @@ if ($_POST && !$error) {
 	$sql = "insert into clientScoring (id,";
 	$val = ") values (".$statusId.",";
 	foreach($_POST as $tag=>$value){
-		$value = addslashes($value);
+		$value = mysql_real_escape_string($value);
 		if(strpos($tag, "ogin_times")!=0){
 			$login_times +=$value;
 		} elseif(strpos($tag, "lay_reason")!=0){
@@ -61,17 +61,17 @@ if ($_POST && !$error) {
 	}
 
 	if($count<$elemente_anzahl){
-		$tpl->assign('ERROR', "Bitte jede Frage beantworten <a href=\"javascript:history.back()\">Zurück</a>");
+		$tpl->assign('ERROR', "Bitte jede Frage beantworten <a href=\"javascript:history.back()\">ZurÃ¼ck</a>");
 		$error = 1;
 	} else{
 		select($doSql);
-		$tpl->assign('MSG', "Vielen Dank für deine Teilnahme!<br /><br />Dein Syndicates-Team");
+		$tpl->assign('MSG', "Vielen Dank fÃ¼r deine Teilnahme!<br /><br />Dein Syndicates-Team");
 		$success = 1;
 	}
 }
 elseif($show && !$error){
 	
-	$tpl->assign('INFO', "Wir, das Syndicates-Team würden uns freuen wenn du dir kurz 2-3 Minuten Zeit nimmst 
+	$tpl->assign('INFO', "Wir, das Syndicates-Team wÃ¼rden uns freuen wenn du dir kurz 2-3 Minuten Zeit nimmst 
 		und an dieser Umfrage teilnimmst.");
 	
 	/*
@@ -98,7 +98,7 @@ elseif($show && !$error){
 	array_push($radio_output, array('question' => "Altersgruppe", 'name' => "age", 'answer' => $temp));
 	$temp = array();
 	
-	// Reallife Tätigkeit
+	// Reallife TÃ¤tigkeit
 	array_push($temp, array('vl' => 1, 'answer' => "...Sch&uuml;ler"));
 	array_push($temp, array('vl' => 2, 'answer' => "...Student"));
 	array_push($temp, array('vl' => 3, 'answer' => "...erwerbst&auml;tig"));
@@ -129,7 +129,7 @@ elseif($show && !$error){
 	$temp = array();
 	
 	/*
-	// Die Gruppengröße (Zukunft)
+	// Die GruppengrÃ¶ÃŸe (Zukunft)
 	array_push($temp, array('vl' => 1, 'answer' => "...gr&ouml;&szlig;er werden"));
 	array_push($temp, array('vl' => 2, 'answer' => "...kleiner werden"));
 	array_push($temp, array('vl' => 3, 'answer' => "...so bleiben"));
@@ -139,7 +139,7 @@ elseif($show && !$error){
 		'question' => "Die Gruppengr&ouml;&szlig;e soll...", 'name' => "feature_groupsize", 'answer' => $temp));
 	$temp = array();
 	
-	// Die Syndikatsgröße (Zukunft)
+	// Die SyndikatsgrÃ¶ÃŸe (Zukunft)
 	array_push($temp, array('vl' => 1, 'answer' => "...gr&ouml;&szlig;er werden"));
 	array_push($temp, array('vl' => 2, 'answer' => "...kleiner werden"));
 	array_push($temp, array('vl' => 3, 'answer' => "...so bleiben"));
@@ -151,10 +151,10 @@ elseif($show && !$error){
 	
 	// Der Global Market
 	array_push($temp, array('vl' => 1, 'answer' => "Darauf hab ich schon ewig gewartet, danke!"));
-	array_push($temp, array('vl' => 2, 'answer' => "Die Vorauswahl von Verkaufen ist ärgerlich, bitte entfernt diese."));
-	array_push($temp, array('vl' => 3, 'answer' => "Ich fände es besser, wenn ich über den Abschickenbutton auswählen kann, ob ich Verkaufe oder Einkaufe"));
-	array_push($temp, array('vl' => 4, 'answer' => "Ich fände es besser, wenn es zwei getrennte Formulare gibt."));
-	array_push($temp, array('vl' => 5, 'answer' => "Bitte teilt die Angebote wieder so auf wie früher, ich war damit glücklicher und kann mir nicht vorstellen, dass ich mich an die aktuelle Implementierung gewöhne."));
+	array_push($temp, array('vl' => 2, 'answer' => "Die Vorauswahl von Verkaufen ist Ã¤rgerlich, bitte entfernt diese."));
+	array_push($temp, array('vl' => 3, 'answer' => "Ich fÃ¤nde es besser, wenn ich Ã¼ber den Abschickenbutton auswÃ¤hlen kann, ob ich Verkaufe oder Einkaufe"));
+	array_push($temp, array('vl' => 4, 'answer' => "Ich fÃ¤nde es besser, wenn es zwei getrennte Formulare gibt."));
+	array_push($temp, array('vl' => 5, 'answer' => "Bitte teilt die Angebote wieder so auf wie frÃ¼her, ich war damit glÃ¼cklicher und kann mir nicht vorstellen, dass ich mich an die aktuelle Implementierung gewÃ¶hne."));
 	array_push($temp, array('vl' => 0, 'answer' => "keine Angaben"));
 	
 	array_push($radio_output, array(
@@ -180,7 +180,7 @@ elseif($show && !$error){
 		'question' => "Ich logge mich regelm&auml;&szlig;ig zu diesen Zeiten ein", 'name' => 'login_times', 'answer' => $temp));
 	$temp = array();
 	
-	// Spielgrund für Syndicates
+	// Spielgrund fÃ¼r Syndicates
 	array_push($temp, array('vl' => 1, 'answer' => "...um Spa&szlig; zu haben"));
 	array_push($temp, array('vl' => 2, 'answer' => "...um erfolgreich im Ranking abzuschneiden"));
 	array_push($temp, array('vl' => 4, 'answer' => "...mit Bekannten/Freunden"));
@@ -194,24 +194,24 @@ elseif($show && !$error){
 	// Zukunft des Auftragsmarktes
 	array_push($temp, array('vl' => 1,  'answer' => "Er soll komplett abschafft werden."));
 	array_push($temp, array('vl' => 2,  'answer' => "Er soll so bleiben wie er ist."));
-	array_push($temp, array('vl' => 4,  'answer' => "Die Landdezimierung ist überflüssig."));
-	array_push($temp, array('vl' => 8,  'answer' => "Ohne Standardaufträge ist der Auftragsmarkt überflüssig."));
-	array_push($temp, array('vl' => 16, 'answer' => "Standardaufträge bei Racherecht halte ich für sinnvoll."));
-	array_push($temp, array('vl' => 32, 'answer' => "Die Preise für Spionageaktionen (Aufklärung) sind zu niedrig."));
+	array_push($temp, array('vl' => 4,  'answer' => "Die Landdezimierung ist Ã¼berflÃ¼ssig."));
+	array_push($temp, array('vl' => 8,  'answer' => "Ohne StandardauftrÃ¤ge ist der Auftragsmarkt Ã¼berflÃ¼ssig."));
+	array_push($temp, array('vl' => 16, 'answer' => "StandardauftrÃ¤ge bei Racherecht halte ich fÃ¼r sinnvoll."));
+	array_push($temp, array('vl' => 32, 'answer' => "Die Preise fÃ¼r Spionageaktionen (AufklÃ¤rung) sind zu niedrig."));
 	
 	array_push($checkbox_output, array(
 		'question' => "Was haltet ihr vom Auftragsmark?", 'name' => 'future_am', 'answer' => $temp));
 	$temp = array();
 	
 	// Zukunft des Tickers
-	array_push($temp, array('vl' => 1,  'answer' => "wieder wie früher einblenden"));
-	array_push($temp, array('vl' => 2,  'answer' => "auf die Statusseite beschränken"));
+	array_push($temp, array('vl' => 1,  'answer' => "wieder wie frÃ¼her einblenden"));
+	array_push($temp, array('vl' => 2,  'answer' => "auf die Statusseite beschrÃ¤nken"));
 	array_push($temp, array('vl' => 4,  'answer' => "auf eine eigene Seite verfrachten, als eine Art \"globaler Chat\""));
 	array_push($temp, array('vl' => 8,  'answer' => "komplett weg damit (wie im Moment)"));
 	
 	array_push($checkbox_output, array(
 		'question' => "Der Ticker wurde zum Anfang der Runde aufgrund einiger Beschwerden deaktiviert. 
-			Welche zukünftige Optionen erachtet ihr für den Ticker als sinnvoll:", 
+			Welche zukÃ¼nftige Optionen erachtet ihr fÃ¼r den Ticker als sinnvoll:", 
 		'name' => 'future_ticker', 'answer' => $temp));
 	$temp = array();
 	
@@ -233,11 +233,11 @@ elseif($show && !$error){
 	$tpl->assign('RADIONR', $radionr_output);
 	
 	$tpl->assign('UEBER_TEXTAREA', 
-		'<strong>Sonstige Dinge die ich über Syndicates loswerden möchte</strong><br />
-		 <em>(Meinungen, Kritiken, Ideen etc. kurz und bündig, wenn nichts bitte leer lassen)</em>
+		'<strong>Sonstige Dinge die ich Ã¼ber Syndicates loswerden mÃ¶chte</strong><br />
+		 <em>(Meinungen, Kritiken, Ideen etc. kurz und bÃ¼ndig, wenn nichts bitte leer lassen)</em>
 		 <br>
 		 <br>
-		 Erwünscht sind auch Namensvorschläge, um die Doppelbenennung der Forschung Fog of War und des 
+		 ErwÃ¼nscht sind auch NamensvorschlÃ¤ge, um die Doppelbenennung der Forschung Fog of War und des 
 		 Monuments Nebel des Krieges aufzuheben.');
 }
 
