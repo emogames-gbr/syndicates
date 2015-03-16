@@ -1,7 +1,7 @@
 <?
 
 //**************************************************************************//
-//							Übergabe Variablen checken
+//							Ãœbergabe Variablen checken
 //**************************************************************************//
 
 $init = (int) $init;
@@ -26,9 +26,9 @@ $player_name = "";		//Spielername
 $player_konzern_name = "";		//Firmaname
 $player_syndicate_name = "";	//Syndikatsname
 
-$general_announcement="";		//generelle Ankündigung
-$president_announcement = "";	//Ankündigung des Päsidenten
-$president_announcement_changetime = "";	//Ankündigung des Päsidenten
+$general_announcement="";		//generelle AnkÃ¼ndigung
+$president_announcement = "";	//AnkÃ¼ndigung des PÃ¤sidenten
+$president_announcement_changetime = "";	//AnkÃ¼ndigung des PÃ¤sidenten
 $print_president_announcement="";
 
 $land_prod = 0;			//Land in Produktion
@@ -37,13 +37,13 @@ $spies = 0;			//Anzahl der Spione
 $spies_prod = 0;			//Anzahl der Spione in Produktion
 $spies_market = 0;
 
-$units = 0;			//Anzahl der Militäreinheiten
-$units_prod = 0;			//Anzahl der Militäreinheiten in Produktion
-$units_away = 0;			//Anzahl der Militäreinheiten auf Heimkehr
+$units = 0;			//Anzahl der MilitÃ¤reinheiten
+$units_prod = 0;			//Anzahl der MilitÃ¤reinheiten in Produktion
+$units_away = 0;			//Anzahl der MilitÃ¤reinheiten auf Heimkehr
 $units_market = 0;
 
-$buildings=0;			//Anzahl der Gebäude
-$buildings_prod = 0;		//Anzahl der Gebäude in Produktion
+$buildings=0;			//Anzahl der GebÃ¤ude
+$buildings_prod = 0;		//Anzahl der GebÃ¤ude in Produktion
 
 $res_prod_money = 0;		//Produktion - Geld
 $res_prod_ore = 0;		//Produktion - Erz
@@ -58,7 +58,7 @@ $metaladd = 0;
 $energyadd = 0;
 $sciencepointsadd = 0;
 
-$zurueck = "<br><br><br><a href=\"javascript:history.back()\" class=linkAufsiteBg>zurück</a>";
+$zurueck = "<br><br><br><a href=\"javascript:history.back()\" class=linkAufsiteBg>zurÃ¼ck</a>";
 $weiter = "<br><br><a href=statusseite.php class=linkAufsiteBg>weiter</a>";
 
 
@@ -75,7 +75,7 @@ $tpl->assign("ripf",$ripf);
 /* R4bbiT - 12.10.10 - auf Wunsch deaktiviert
 //START Spruch des Tage by Christian
 $spruch=assocs("SELECT * FROM spruch_des_tages");
-//hier einfach Sprüche hinzu schreiben
+//hier einfach SprÃ¼che hinzu schreiben
 srand((double)microtime()*1000000);
 if(rand(1,10)==5){
 	$zufallsIndex = rand(0,count($spruch)-1);
@@ -98,7 +98,7 @@ if ($ism) {
 //**************************************************************************
 //**************************************************************************
 
-// Daten für istp holen
+// Daten fÃ¼r istp holen
 $ressources = getresstats();
 $resstats = $ressources;
 	foreach ($resstats as $k => $value) {
@@ -156,7 +156,7 @@ if($status['gamble_own'] && !$globals['updating']){
 							  'type' => 'gamble');
 	if($_POST['action'] == 'gamble'){
 		if($gamble[$_POST['name']]['type'] === 'ress' || $gamble[$_POST['name']]['type'] === 'mil'){
-			select('UPDATE status SET '.$_POST['name'].' = '.$_POST['name'].' + '.$gamble[$_POST['name']]['value'].' WHERE id = '.$id);
+			select('UPDATE status SET '.mysql_real_escape_string($_POST['name']).' = '.mysql_real_escape_string($_POST['name']).' + '.$gamble[$_POST['name']]['value'].' WHERE id = '.$id);
 			$status['gamble_own'] -= 1;
 			$status[$_POST['name']] += $gamble[$_POST['name']]['value'];
 			$status{nw} = nw($status{id});
@@ -176,7 +176,7 @@ if($status['gamble_own'] && !$globals['updating']){
 					$status[$value['name']] += $val;
 					$status{nw} = nw($status{id});
 					select('UPDATE status SET gamble_own = gamble_own - 1, nw = '.$status{nw}.' WHERE id = '.$id);
-					$tpl->assign("MSG", "Sie haben zufällig <strong> ".pointit($val)." ".$value['label']."</strong> erhalten");
+					$tpl->assign("MSG", "Sie haben zufÃ¤llig <strong> ".pointit($val)." ".$value['label']."</strong> erhalten");
 					$tpl->display("sys_msg.tpl");
 					break;
 				}
@@ -197,7 +197,7 @@ if($status['gamble_own'] && !$globals['updating']){
 }
 
 
-// täglicher Boni von Tag 3-9 (bzw. je nach Einstellung in update.php)
+// tÃ¤glicher Boni von Tag 3-9 (bzw. je nach Einstellung in update.php)
 // R4bbiT - 29.12.10
 if($status['daily_boni'] && !$globals['updating']){
 	
@@ -259,7 +259,7 @@ if($status['daily_boni'] && !$globals['updating']){
 							  'type' => 'gamble');
 	if($_POST['action'] == 'daily'){
 		if($daily[$_POST['name']]['type'] === 'ress' || $daily[$_POST['name']]['type'] === 'mil' || $daily[$_POST['name']]['type'] === 'spy'){
-			select('UPDATE status SET '.$_POST['name'].' = '.$_POST['name'].' + '.$daily[$_POST['name']]['value'].' WHERE id = '.$id);
+			select('UPDATE status SET '.mysql_real_escape_string($_POST['name']).' = '.mysql_real_escape_string($_POST['name']).' + '.$daily[$_POST['name']]['value'].' WHERE id = '.$id);
 			$status['daily_boni']--;
 			$status[$_POST['name']] += $daily[$_POST['name']]['value'];
 			$status{nw} = nw($status{id});
@@ -279,7 +279,7 @@ if($status['daily_boni'] && !$globals['updating']){
 					$status[$value['name']] += $val;
 					$status{nw} = nw($status{id});
 					select('UPDATE status SET daily_boni = daily_boni-1, nw = '.$status{nw}.' WHERE id = '.$status['id']);
-					$tpl->assign("MSG", "Sie haben zufällig <strong> ".pointit($val)." ".$value['label']."</strong> erhalten");
+					$tpl->assign("MSG", "Sie haben zufÃ¤llig <strong> ".pointit($val)." ".$value['label']."</strong> erhalten");
 					$tpl->display("sys_msg.tpl");
 					break;
 				}
@@ -312,13 +312,13 @@ pvar(round_days_played());
 // der Weihnachtsbonus ist inzwischen unter inc/events eingebaut
 
 //
-// Überprüfen ob in nächster Zeit ein Assistent abläuft
+// ÃœberprÃ¼fen ob in nÃ¤chster Zeit ein Assistent ablÃ¤uft
 //
 
 $assi_lauft_ab = single("SELECT COUNT(*) FROM features 
 	WHERE konzernid = ".$status[id]." AND time_bis < ".($time + 259200)." AND ".$time." < time_bis");
 if ($assi_lauft_ab) {
-	$tpl->assign("INFO", "Einer oder mehrere deiner Assistenten laufen demnächst aus. Um sie zu verlängern klicke
+	$tpl->assign("INFO", "Einer oder mehrere deiner Assistenten laufen demnÃ¤chst aus. Um sie zu verlÃ¤ngern klicke
 		<a href=\"premiumfeatures.php\" target=\"_blank\">hier</a>");
 	$tpl->display('info.tpl');
 }
@@ -345,17 +345,17 @@ if ($inneraction == "setistp" && array_sum(explode("|", $syndikat[creditforschun
 		$tpl->assign("MSG", $beschr);
 		$tpl->display("sys_msg.tpl");	
 	} else {
-		$errormsg = "Diese Ressource ist bereits ausgewählt.";
+		$errormsg = "Diese Ressource ist bereits ausgewÃ¤hlt.";
 		$tpl->assign('ERROR', $errormsg);
 		$tpl->display('fehler.tpl');
 	}
 }
 elseif ($inneraction == "unprotect" && !$dounprotect){
-	$errormsg = "Mit dem Verlassen der Schutzzeit ermöglichst du es anderen Spielern dich anzugreifen, auszuspionieren und zu bestehlen. Bist du sicher, dass du die Schutzzeit verlassen möchtest?<br /><br /><center>
+	$errormsg = "Mit dem Verlassen der Schutzzeit ermÃ¶glichst du es anderen Spielern dich anzugreifen, auszuspionieren und zu bestehlen. Bist du sicher, dass du die Schutzzeit verlassen mÃ¶chtest?<br /><br /><center>
 		<form id=\"commit_form\" action=\"statusseite.php\" method=\"post\">
 		<input type=\"hidden\" name=\"inneraction\" value=\"unprotect\" />
 		<input type=\"hidden\" name=\"dounprotect\" value=1 />
-        <a href=\"statusseite.php\" class=\"LinkAuftableInner\">NEIN - ich denke nochmal drüber nach.</a><br><br>
+        <a href=\"statusseite.php\" class=\"LinkAuftableInner\">NEIN - ich denke nochmal drÃ¼ber nach.</a><br><br>
         <a href=\"#\" onClick=\"document.getElementById('commit_form').submit();\" class=\"LinkAuftableInner\">JA - ich bin jung und brauch' den Bonus.</a></form></center>
 	";
 	$tpl->assign('ERROR', $errormsg);
@@ -365,17 +365,17 @@ elseif ($inneraction == "unprotect" && $dounprotect){
 	if($time >= $status['createtime']+21600 && $time < $status['unprotecttime']){
 		select("update status set unprotecttime = ".$time." where id = $id");
 		$status['unprotecttime'] = $time;
-		$beschr = "Sie haben die Schutzzeit frühzeitig verlassen und erhalten dadurch in dieser Runde einen Produktionsbonus von ".(getUnprotectBonus($status)*100)."% auf Ihre Standardressource.";
+		$beschr = "Sie haben die Schutzzeit frÃ¼hzeitig verlassen und erhalten dadurch in dieser Runde einen Produktionsbonus von ".(getUnprotectBonus($status)*100)."% auf Ihre Standardressource.";
 		$tpl->assign("MSG", $beschr);
 		$tpl->display("sys_msg.tpl");
 	}
 	else{
-		$errormsg = "Diese Aktion ist zur Zeit leider nicht möglich.";
+		$errormsg = "Diese Aktion ist zur Zeit leider nicht mÃ¶glich.";
 		$tpl->assign('ERROR', $errormsg);
 		$tpl->display('fehler.tpl');
 	}
 }
-//Schutzzeit frühzeitig beenden
+//Schutzzeit frÃ¼hzeitig beenden
 if($time >= $status['createtime']+21600 && $time < $status['unprotecttime']) {
 	$tooltip="</td></tr><tr><td class=\"tableHead2\" width=\"300\"><b>Produktionsboni: ".(UNPROTECT_BONUS*100)."% pro Stunde</b></td></tr><tr><td class=\"tableInner1\">
 	<b>Erz:</b> United Industries Corporation, New Economic Block<br /></td></tr><tr><td class=\"tableInner1\"><b>Energie:</b> Brute Force, Nova Federation<br /></td></tr><tr><td class=\"tableInner1\"><b>Forschungspunkte:</b> Shadow Labs<br /></td>";
@@ -449,14 +449,14 @@ if($energyadd >= 0) {
   $criticalenergy2 = pointit($energyhours)." ".$nrgtick;
 }
 ($status{energy} + $energyadd >= $maxsave) ? $maxsave_reached = "&nbsp;<b class=highlightAuftableInner>*</b>" : 1;
-($status{energy} + $energyadd >= $maxsave) ? $warner = "<tr><td colspan=3 align=right><b class=highlightAuftableInner>*</b> <strong class=\"achtungAuftableInner\">Lagerkapazitäten erschöpft</strong><br>&nbsp;</td></tr>" : 1;
+($status{energy} + $energyadd >= $maxsave) ? $warner = "<tr><td colspan=3 align=right><b class=highlightAuftableInner>*</b> <strong class=\"achtungAuftableInner\">LagerkapazitÃ¤ten erschÃ¶pft</strong><br>&nbsp;</td></tr>" : 1;
 ($status{energy} + $energyadd < 0) ? $critical = $criticalenergy1 = "<font class=highlightAuftableInner> * &#189;</font>" : 1;
 
 $energyadd = $energyadd;
 $energyprod = energyadd($status{id},1);
 $energyuse = energyadd($status{id},2);
 
-// Selects für nächste aktion
+// Selects fÃ¼r nÃ¤chste aktion
 $tables = array(
 	"build_buildings" => "buildings",
 	"build_military" => "military_unit_settings",
@@ -533,7 +533,7 @@ if ($globals[roundstatus] == 1) {
 	if ($bonuscount < 0) {$bonuscount = 0;}
 
 /*
-					<A HREF=\"bonus.php?site=buecher&type=1\" target=\"_blank\" class=linkAuftableInner>Bücher</A> |
+					<A HREF=\"bonus.php?site=buecher&type=1\" target=\"_blank\" class=linkAuftableInner>BÃ¼cher</A> |
 					<A HREF=\"bonus.php?site=musik&type=1\" target=\"_blank\" class=linkAuftableInner>Musik</A> |
 					<A HREF=\"bonus.php?site=dvd&type=1\" target=\"_blank\" class=linkAuftableInner>DVDs</A> |
 
@@ -601,14 +601,14 @@ if ($globals[roundstatus] == 1) {
 		{
 			$tpl_res=array();
 			if(	
-				( $key == $status[istp_production] )						// wenn die Trade-Ressource mit der select-ressource übereinstimmt
+				( $key == $status[istp_production] )						// wenn die Trade-Ressource mit der select-ressource Ã¼bereinstimmt
 				||
 				(
-					$key == "money" && $status['istp_production'] == "none"  // oder wenn die select-ressource creds ist und Trade auf none, also noch nicht gewählt, steht
+					$key == "money" && $status['istp_production'] == "none"  // oder wenn die select-ressource creds ist und Trade auf none, also noch nicht gewÃ¤hlt, steht
 				)
 			)
 			{
-				$selected = "selected";		// wähle die entsprechende Ressource aus
+				$selected = "selected";		// wÃ¤hle die entsprechende Ressource aus
 			}
 			else
 			{
@@ -630,7 +630,7 @@ if($_GET['delscoring']){
 	select("insert into clientScoring (id) values (".$status[id].")");
 }
 if(time() < CLIENT_SCORING_ENDTIME && !single("select COUNT(*) from clientScoring where id=".$status[id])){
-	$infomsg = "<br><center>Wir, das Syndicates-Team würden uns freuen, wenn ihr euch 2-3 Minuten Zeit für eine Umfrage nehmen könntet. Ziel ist es, uns ein besseres Bild davon zu machen, was Ihr über einzelne Aspekte der Spiels denkt. Und was verbessert werden könnte, um Syndicates in Zukunft wieder mehr an die Bedürfnisse der Spieler anzupassen.<br>   <a  href=\"clientScoring.php\">Teilnehmen</a> - <a  href=\"statusseite.php?delscoring=1\" onClick=\"if(confirm('Willst du wirklich nicht teilnehmen?')) return true; return false;\">Keine Lust</a> <br><br>Euer Staffteam</center><br>";
+	$infomsg = "<br><center>Wir, das Syndicates-Team wÃ¼rden uns freuen, wenn ihr euch 2-3 Minuten Zeit fÃ¼r eine Umfrage nehmen kÃ¶nntet. Ziel ist es, uns ein besseres Bild davon zu machen, was Ihr Ã¼ber einzelne Aspekte der Spiels denkt. Und was verbessert werden kÃ¶nnte, um Syndicates in Zukunft wieder mehr an die BedÃ¼rfnisse der Spieler anzupassen.<br>   <a  href=\"clientScoring.php\">Teilnehmen</a> - <a  href=\"statusseite.php?delscoring=1\" onClick=\"if(confirm('Willst du wirklich nicht teilnehmen?')) return true; return false;\">Keine Lust</a> <br><br>Euer Staffteam</center><br>";
 
 		$tpl->assign('INFO', $infomsg);
 		$tpl->display('info.tpl');
@@ -639,7 +639,7 @@ if(time() < CLIENT_SCORING_ENDTIME && !single("select COUNT(*) from clientScorin
 
 if ($president_announcement) {
 	if ($status[new_synannouncement] && !$adminlogin && $panm!=1) {
-		$infomsg = "<br><br><center>Hinweis: <b>Der Präsident hat eine neue <a style=\"text-decoration:underline;font-size:12px;\" href=\"statusseite.php?panm=1\">Syndikatsankündigung</a> erstellt!</b></center><br>";
+		$infomsg = "<br><br><center>Hinweis: <b>Der PrÃ¤sident hat eine neue <a style=\"text-decoration:underline;font-size:12px;\" href=\"statusseite.php?panm=1\">SyndikatsankÃ¼ndigung</a> erstellt!</b></center><br>";
 		$tpl->assign('INFO', $infomsg);
 		$tpl->display('info.tpl');
 	
@@ -789,7 +789,7 @@ if ($status[partnerschaften]) {
 	$partnerschaften = assocs("SELECT s.id, bonus, type FROM partnerschaften_general_settings AS gs, partnerschaften_settings AS s " .
 			"WHERE s.id = gs.id AND s.round = '".$globals['round']."' ORDER BY type", 'id');
 	
-	$tpl_partnerschaften = array('mill' => array('boni' => array(),'name' => 'Militär'), 
+	$tpl_partnerschaften = array('mill' => array('boni' => array(),'name' => 'MilitÃ¤r'), 
 								'spy' => array('boni' => array(),'name' => 'Spionage'),
 								'eco' => array('boni' => array(),'name' => 'Wirtschaft'),
 								'all' => array('boni' => array(),'name' => 'Allgemein'));
@@ -818,7 +818,7 @@ if ($status[partnerschaften]) {
 	if (1 <= $pdifferenz) {
 		if($action != "setpartner"){
 			if ($pdifferenz>1) $mehrzahl = 'boni'; else $mehrzahl = 'bonus';
-			$infomsg = 'Sie können noch insgesamt '.$pdifferenz.' Partnerschafts'.$mehrzahl.' wählen! (<font onclick=\"javascript: document.location.href=\'#pboni\'" style="cursor:pointer; font-style:italic;">siehe unten</font>)';
+			$infomsg = 'Sie kÃ¶nnen noch insgesamt '.$pdifferenz.' Partnerschafts'.$mehrzahl.' wÃ¤hlen! (<font onclick=\"javascript: document.location.href=\'#pboni\'" style="cursor:pointer; font-style:italic;">siehe unten</font>)';
 			$tpl->assign('INFO', $infomsg);
 			$tpl->display('info.tpl');
 		}
@@ -895,7 +895,7 @@ if ($globals[roundstarttime] - $time > 0) {
 
 if ($action == "setpartner") {
 	//unset($ausgabe);
-	//$zurueck = "<br><br><br><a href=\"javascript:history.back()\" class=linkAufsiteBg>zurück</a>";
+	//$zurueck = "<br><br><br><a href=\"javascript:history.back()\" class=linkAufsiteBg>zurÃ¼ck</a>";
 	//$weiter = "<br><br><a href=statusseite.php class=linkAufsiteBg>weiter</a>";
 	if ($pdifferenz >= 1 && !$globals['updating']) {
 		$partner_gen_set = assoc("SELECT * FROM partnerschaften_general_settings WHERE id = '".addslashes($pid)."'");
@@ -904,14 +904,14 @@ if ($action == "setpartner") {
 			$bonus = single("select id from partnerschaften_settings where id = $pid and round = $globals[round]");
 			if (!$ia) {
 				if ($bonus) {
-					$infomsg = "<br><table width=80% class=i><tr><td><center>Möchten Sie wirklich folgenden Bonus wählen?<br><br>
+					$infomsg = "<br><table width=80% class=i><tr><td><center>MÃ¶chten Sie wirklich folgenden Bonus wÃ¤hlen?<br><br>
 					".$partner_gen_set['bonus']."<br><br>
 					<a href=statusseite.php?action=setpartner&pid=$pid&ia=confirm>JA</a> - <a href=statusseite.php>Abbrechen</a></center></td></tr></table>";
 					$tpl->assign('INFO', $infomsg);
 					$tpl->display('info.tpl');
 				}
 				else { 
-					$errormsg = "Ungültigen Bonus gewählt!";
+					$errormsg = "UngÃ¼ltigen Bonus gewÃ¤hlt!";
 					$tpl->assign('ERROR', $errormsg);
 					$tpl->display('fehler.tpl'); 
 				}
@@ -937,7 +937,7 @@ if ($action == "setpartner") {
 						if ($pid == 23) {
 							$queries[] = "update status set offspecs = offspecs + ".(PARTNERBONUS_OFFSPECS)." where id = $id";
 						} 
-						$beschr = "Sie haben den Bonus <b>\"".$partner_gen_set['bonus']."\"</b> gewählt.";
+						$beschr = "Sie haben den Bonus <b>\"".$partner_gen_set['bonus']."\"</b> gewÃ¤hlt.";
 						$tpl->assign("MSG", $beschr);
 						$tpl->display("sys_msg.tpl");
 						// Obige Berechnung nachkorrigieren:
@@ -951,34 +951,34 @@ if ($action == "setpartner") {
 						$tpl->assign("PARTNERSCHAFTEN",$tpl_partnerschaften);
 						$tpl->assign("PARTNER_DIFF",$pdifferenz);
 					} else {
-						$errormsg = "Sie können den Bonus zum Beschleunigen der Forschung erst wählen, wenn Sie eine Forschung erforschen. Sie erforschen zurzeit nichts.";
+						$errormsg = "Sie kÃ¶nnen den Bonus zum Beschleunigen der Forschung erst wÃ¤hlen, wenn Sie eine Forschung erforschen. Sie erforschen zurzeit nichts.";
 						$tpl->assign('ERROR', $errormsg);
 						$tpl->display('fehler.tpl');
 					}
 				}
 				else { 
-					$errormsg = "Ungültigen Bonus gewählt!";
+					$errormsg = "UngÃ¼ltigen Bonus gewÃ¤hlt!";
 					$tpl->assign('ERROR', $errormsg);
 					$tpl->display('fehler.tpl');
 				}
 			}
 		} elseif (PBS_PER_TYPE_CHOOSEABLE <= $kates[$partner_gen_set['type']]){ 
-			$errormsg = "Sie haben bereits zwei Boni dieser Kategorie gewählt.";
+			$errormsg = "Sie haben bereits zwei Boni dieser Kategorie gewÃ¤hlt.";
 			$tpl->assign('ERROR', $errormsg);
 			$tpl->display('fehler.tpl');
 		} else {
-			$errormsg = "Sie haben diesen Bonus bereits gewählt.";
+			$errormsg = "Sie haben diesen Bonus bereits gewÃ¤hlt.";
 			$tpl->assign('ERROR', $errormsg);
 			$tpl->display('fehler.tpl');
 		}
 	}
 	else if(!$globals['updating']) { 
-		$errormsg = "Sie können keine weiteren Partnerschaftsboni wählen!";
+		$errormsg = "Sie kÃ¶nnen keine weiteren Partnerschaftsboni wÃ¤hlen!";
 		$tpl->assign('ERROR', $errormsg);
 		$tpl->display('fehler.tpl');			
 	}
 	else { 
-		$errormsg = "Momentan läuft das stündliche Update. Bitte warten Sie noch einen Augenblick und drücken Sie dann F5 oder laden Sie die Seite erneut.";
+		$errormsg = "Momentan lÃ¤uft das stÃ¼ndliche Update. Bitte warten Sie noch einen Augenblick und drÃ¼cken Sie dann F5 oder laden Sie die Seite erneut.";
 		$tpl->assign('ERROR', $errormsg);
 		$tpl->display('fehler.tpl');
 		exit();
@@ -986,7 +986,7 @@ if ($action == "setpartner") {
 }
 
 db_write($queries);
-db_write($queriesend,1); # Für queries die auch nach Rundende ausgeführt werden
+db_write($queriesend,1); # FÃ¼r queries die auch nach Rundende ausgefÃ¼hrt werden
 
 //**************************************************************************
 //							Header, Ausgabe, Footer
